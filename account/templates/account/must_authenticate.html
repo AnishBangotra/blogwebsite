@@ -1,0 +1,22 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<style type="text/css">
+    a{
+       padding:4px
+    }
+</style>
+<div class="container">
+     <div class="d-flex flex-column">
+        <p class="m-auto">You must register or login to create a post!</p>
+        <p class="m-auto">
+            <a href="{% url 'register' %}">Register here</a>|
+            <a href="{% url 'Login' %}">Login here</a>
+        </p>
+    </div>
+</div>
+
+
+{% endblock content %}  
+
