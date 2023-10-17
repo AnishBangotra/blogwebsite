@@ -1,0 +1,93 @@
+{% extends "base.html" %}
+{% load static %}
+{% block content %}
+
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
+	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css" integrity="sha384-UHRtZLI+pbxtHCWp1t77Bi1L4ZtiqrqD80Kn4Z8NTSRyMA2Fd33n5dQ8lWUE00s/" crossorigin="anonymous">
+
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+<!--====================================================================================================================================-->
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
+<!--Adding bootstrap sign-in CSS here-->
+<style type="text/css">
+  #section{
+    font-family: Arial, Helvetica, sans-serif;
+    box-sizing: content-box;
+  }
+  .container{
+    align-items: center;
+  }
+ .form-signin {
+   width: 100%;
+   max-width: 330px;
+   padding: 15px;
+   margin: auto;
+ }
+ .form-signin .form-control {
+   position: relative;
+   box-sizing: border-box;
+   height: auto;
+   padding: 10px;
+   font-size: 16px;
+ }
+ .form-signin .form-control:focus {
+   z-index: 2;
+ }
+ .form-signin input[type="email"] {
+   margin-bottom: -1px;
+   border-bottom-right-radius: 0;
+   border-bottom-left-radius: 0;
+ }
+ .form-signin input[type="password"] {
+   margin-bottom: 10px;
+   border-top-left-radius: 0;
+   border-top-right-radius: 0;
+ }
+ .h3{
+     text-align:center;
+ }
+</style>
+<!--Adding bootstrap sign-in html here-->
+      <form class="form-signin" method="post">{% csrf_token %}
+          <br><br><br>
+          <div class="container">
+              <h1 class="h3 mb-3 fw-normal">Login</h1>
+                  <i class="fa fa-users"></i>
+                  <label for="">Email</label>
+                  <input type="email" name="email" id="inputEmail" class="form-control" placeholder="Email address" required autofocus>
+                  <br>
+                  <i class="fa fa-key"></i>
+                  <label for="">Password</label>
+                  <input type="password" name="password" id="inputPassword" class="form-control" placeholder="Password" required>
+                  {% for field in login_form %}
+                      <p>
+                          {% for error in field.error %}
+                              <p style="color:red;">{{error}}</p>
+                          {% endfor %}
+                      </p>
+                  {% endfor %}
+                  {% if login_form.non_field_errors %}
+                      <div style="color:red;">
+                          <p>{{login_form.non_field_errors}}</p>
+                      </div>
+                  {% endif %}
+                <br>
+                    <button class="w-100 btn btn-lg btn-primary" type="submit">Sign in</button>
+                          <div class="d-flex flex column">
+                              <a class='m-auto' href="{% url 'password_reset' %}">Forget password</a>
+                          </div>
+                </div>
+              
+
+      </form>
+  
+	<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js" integrity="sha384-B0UglyR+jN6CkvvICOB2joaf5I4l3gm9GU6Hc1og6Ls7i6U/mkkaduKaBhlAXv9k" crossorigin="anonymous"></script>
+<!--====================================================================================================================================-->
+	<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+<!--====================================================================================================================================-->
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js" integrity="sha384-wHAiFfRlMFy6i5SRaxvfOCifBUQy1xHdJ/yoi7FRNXMRBu5WHdZYu1hA6ZOblgut" crossorigin="anonymous"></script>
+
+
+
+{% endblock  %}

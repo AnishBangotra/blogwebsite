@@ -1,0 +1,98 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block content %}
+<!--Pricing Body text here-->
+<style type="text/css">
+
+	@media (max-width: 768px) { 
+		.right-column{
+			margin-left: 0px;
+		}
+	}
+
+	@media (min-width: 768px) { 
+		.right-column{
+			margin-left: 20px;
+		}
+	}
+
+	.blog-post-container{
+		margin-bottom: 20px;
+		width: 100%;
+	}
+	.create-post-bar{
+		background-color: #fff;
+		margin-bottom:20px;
+	}
+
+	.left-column{
+		padding:0px;
+	}
+
+	.right-column{
+		padding:0px;
+	}
+      .lead{
+            font-family:"Montserrat-light";
+            font-size:17px;
+      }
+
+      .color{
+            background-color: rgba(0, 0, 0, 0.2);
+      }
+      .card-header-color{
+      
+      }
+
+</style>
+
+<div class="container">
+  <div class="row">
+      <!--blog feed-->
+      <div class="left-column col-lg-7 offset-lg-1">
+
+            <!--Top 'create post' bar -->
+            <div class="d-lg-none mb-3">
+                    <div class="color card card-bg-light card-header-color m-auto d-flex flex-column p-3"> 
+                        <img class="img-fluid d-block m-auto pb-2" style="border-radius: 50%;" src="{% static 'PY CODER NEW-01.jpg' %}" alt="parrot_logo1" width="80' height="80>
+                        <p class="lead">You can use this site to create a simple blog with user registration and blog CRUD functionality
+                                framework, share and refer to other about this.</p>
+                        <p class="m-auto"><a class="btn btn-primary" href="{% url 'blog:create' %}">Create post></a></p>
+                    </div>
+            </div>
+            <!--End top 'create post' bar-->
+
+            <!--Blog posts(Feed)---->
+            {% if blog_posts %}
+                  {% for post in blog_posts %}
+                        <div class="blog-post-container">
+                              {% include 'blog/snippets/blog_post_snippet.html' with blog_post=post %}
+                        </div>
+                  {% endfor %}
+            {% else %}
+                  <div class="blog-post-container">
+                              {% include "blog/snippets/blog_post_snippet.html" with query=query %}}
+                  </div>
+            {% endif %}
+            <!--End blog feed-->
+      <!--Pagination here--->
+      {% include 'blog/snippets/blog_post_pagination.html' with blog_posts=blog_posts %}
+      </div>
+
+            <!--Right 'create post' column--->
+      <div class="right-column col-lg-3 d-lg-flex d-none flex-column">
+                <div class="card card-bg-light create-post-bar d-flex flex-column p-3">
+                    <img class="img-fluid d-block m-auto pb-2" style="border-radius: 50%;" src="{% static 'PY CODER NEW-01.jpg' %}" alt="parrot_logo" width="80' height="80>
+                    <p class="lead">You can use this site to create a simple blog with user registration and blog CRUD functionality
+                                framework, share and refer to other about this.</p>
+                    <p class="m-auto"><a class="btn btn-primary" href="{% url 'blog:create' %}">Create post</a></p>
+                </div>
+
+          
+            <!--End Right 'Create post' column ----->
+      </div>      
+  </div>
+</div>
+
+{% endblock content %}

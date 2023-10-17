@@ -1,0 +1,41 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+<head>
+    <title>django frontend</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+	<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@900&family=Ubuntu:wght@500&display=swap" rel="stylesheet">
+</head>
+
+<body>
+{% include 'snippets/base_css.html' %}
+{% include 'snippets/header.html' %}
+<!--Body-->
+        <!--Here we are describing the style type then after closing syle
+            we are creating a class with'.' named main containing min height and
+            total height percentage and then we call this class in a div where we add 
+            our main block content so this acts only on that so our footer get shifted to 
+            a long bottom, we are describing min-height in vh, which means viewport Height
+            This is the unit based on the height of view port where 1vh = 1%, also there is
+            (vw) as viewport width.<-->
+<!-- Body -->
+<style type="text/css">
+	.main{
+		height: auto;
+        min-height: 100vh;
+	}
+</style>
+<div class="main">
+	{% block content %}
+
+	{% endblock content %}
+</div>
+<!-- End Body -->
+
+{% include 'snippets/footer.html' %}
+
+</body>
+
+</html>
